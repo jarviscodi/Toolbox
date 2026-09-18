@@ -1,0 +1,12 @@
+{
+  "name": "@toolbox/api",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "node src/server.js",
+    "build": "node -e \"console.log('API build placeholder')\"",
+    "lint": "node -e \"console.log('API lint placeholder')\"",
+    "typecheck": "node -e \"console.log('API typecheck placeholder')\"",
+    "test": "node -e \"console.log('API test placeholder')\""
+  }
+}
