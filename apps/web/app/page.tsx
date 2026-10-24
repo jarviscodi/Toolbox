@@ -1,3 +1,5 @@
+import FileUploader from "../components/file-uploader/FileUploader";
+import ToolboxWorkspace from "../components/toolbox-workspace/ToolboxWorkspace";
 const popularTools = [
   ["JPG → PDF", "Convert images into a PDF document."],
   ["PDF → JPG", "Turn PDF pages into image files."],
@@ -30,13 +32,7 @@ export default function HomePage() {
             Convert, compress, edit and organize PDFs, images and documents in one simple place.
           </p>
 
-          <div className="uploadBox">
-            <div className="uploadIcon">↑</div>
-            <h2>Drop your file here</h2>
-            <p>or choose a file to get started</p>
-            <button type="button">Choose File</button>
-            <small>PDF · JPG · PNG · WEBP · DOCX · XLSX · PPTX</small>
-          </div>
+        <ToolboxWorkspace />
         </div>
       </section>
 

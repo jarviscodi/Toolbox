@@ -1,0 +1,155 @@
+.toolSelector {
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+
+.selectedFile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.selectedFile strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectedFile button {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.heading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.heading span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  color: #737982;
+}
+
+.heading h2 {
+  margin: 8px 0;
+  font-size: 28px;
+  letter-spacing: -0.8px;
+}
+
+.heading p {
+  margin: 0;
+  color: #707680;
+  font-size: 14px;
+}
+
+.toolGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.toolCard {
+  min-height: 170px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.toolCard:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.toolCategory {
+  display: block;
+  margin-bottom: 12px;
+  color: #737982;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.toolCard strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 17px;
+}
+
+.toolCard p {
+  margin: 0 0 18px;
+  color: #707680;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.openTool {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.noTools {
+  padding: 30px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.noTools h3 {
+  margin: 0 0 8px;
+}
+
+.noTools p {
+  margin: 0;
+  color: #707680;
+  font-size: 14px;
+}
+
+.changeTool,
+.changeFile {
+  display: block;
+  margin: 14px auto 0;
+  border: 0;
+  background: transparent;
+  color: #5e646d;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.changeTool:hover,
+.changeFile:hover {
+  color: #111111;
+}
+
+@media (max-width: 600px) {
+  .toolGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading h2 {
+    font-size: 24px;
+  }
+}

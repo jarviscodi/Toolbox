@@ -24,21 +24,9 @@ a { color: inherit; text-decoration: none; }
 h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.04; letter-spacing: -2.5px; margin: 0 auto 18px; max-width: 780px; }
 .heroText { color: #656b74; font-size: 18px; line-height: 1.6; max-width: 650px; margin: 0 auto 36px; }
 
-.uploadBox {
-  max-width: 680px; margin: 0 auto; padding: 38px 24px;
-  border: 1.5px dashed #b8bec7; border-radius: 18px; background: #fafbfc;
-}
-.uploadIcon {
-  width: 42px; height: 42px; border-radius: 50%; background: #17191d; color: white;
-  display: grid; place-items: center; margin: 0 auto 14px; font-size: 20px;
-}
-.uploadBox h2 { margin: 0 0 6px; font-size: 21px; }
-.uploadBox p { margin: 0 0 18px; color: #737982; }
-.uploadBox button {
-  border: 0; border-radius: 9px; padding: 12px 22px; background: #17191d; color: white;
-  font-weight: 700; cursor: pointer;
-}
-.uploadBox small { display: block; margin-top: 16px; color: #858b94; font-size: 11px; }
+
+
+
 
 .section { padding: 64px 0; }
 .sectionHeading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 24px; }

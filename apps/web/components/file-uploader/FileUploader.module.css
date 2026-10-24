@@ -1,0 +1,109 @@
+.fileUploader {
+  width: 100%;
+}
+
+.uploadBox {
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.uploadBox:hover {
+  border-color: #64748b;
+  background: #f8fafc;
+}
+
+.uploadBox.dragging {
+  border-color: #2563eb;
+  background: #eff6ff;
+  transform: scale(1.01);
+}
+
+.uploadIcon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f1f5f9;
+  font-size: 28px;
+}
+
+.uploadBox h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.uploadBox p {
+  margin: 0 0 10px;
+  color: #64748b;
+}
+
+.uploadBox span {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.errorBox {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.errorBox p {
+  margin: 4px 0;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.fileList {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.fileItem strong {
+  display: block;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.fileItem small {
+  color: #64748b;
+}
+
+.fileItem button {
+  flex-shrink: 0;
+  border: 0;
+  background: transparent;
+  color: #dc2626;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fileItem button:hover {
+  text-decoration: underline;
+}
