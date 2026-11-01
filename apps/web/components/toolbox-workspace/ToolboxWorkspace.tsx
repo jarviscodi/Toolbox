@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ToolboxWorkspace.module.css";
 
 import FileUploader from "../file-uploader/FileUploader";
@@ -26,6 +26,22 @@ export default function ToolboxWorkspace() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [selectedTool, setSelectedTool] =
     useState<ToolDefinition | null>(null);
+  const [requestedToolId, setRequestedToolId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleToolSelection = (event: Event) => {
+      const customEvent = event as CustomEvent<{ toolId: string }>;
+      setRequestedToolId(customEvent.detail.toolId);
+      setSelectedFiles([]);
+      setSelectedTool(null);
+    };
+
+    window.addEventListener("toolbox:select-tool", handleToolSelection);
+
+    return () => {
+      window.removeEventListener("toolbox:select-tool", handleToolSelection);
+    };
+  }, []);
 
   const handleFilesSelected = (files: File[]) => {
     setSelectedFiles(files);
@@ -37,24 +53,44 @@ export default function ToolboxWorkspace() {
       ? getToolsForFile(selectedFiles[0].type)
       : [];
 
+  useEffect(() => {
+    if (!requestedToolId || selectedFiles.length === 0) {
+      return;
+    }
+
+    const tool = availableTools.find(
+      (item) => item.id === requestedToolId,
+    );
+
+    if (tool) {
+      setSelectedTool(tool);
+      setRequestedToolId(null);
+    }
+  }, [requestedToolId, selectedFiles, availableTools]);
+
   if (selectedFiles.length === 0) {
     return (
-      <FileUploader
-        accept={acceptedMimeTypes}
-        maxSizeBytes={25 * 1024 * 1024}
-        multiple
-        onFilesSelected={handleFilesSelected}
-      />
+      <div>
+        {requestedToolId && (
+          <p className={styles.heading}>
+            Selected tool: {requestedToolId}. Choose the required file(s) below.
+          </p>
+        )}
+
+        <FileUploader
+          accept={acceptedMimeTypes}
+          maxSizeBytes={25 * 1024 * 1024}
+          multiple
+          onFilesSelected={handleFilesSelected}
+        />
+      </div>
     );
   }
 
   if (selectedTool) {
     return (
       <div>
-        <ToolWorkspace
-          files={selectedFiles}
-          tool={selectedTool}
-        />
+        <ToolWorkspace files={selectedFiles} tool={selectedTool} />
 
         <button
           type="button"
@@ -87,11 +123,8 @@ export default function ToolboxWorkspace() {
               ? selectedFiles[0].name
               : `${selectedFiles.length} files selected`}
           </strong>
-
           {selectedFiles.length > 1 && (
-            <p>
-              {selectedFiles.map((file) => file.name).join(", ")}
-            </p>
+            <p>{selectedFiles.map((file) => file.name).join(", ")}</p>
           )}
         </div>
 
@@ -108,12 +141,8 @@ export default function ToolboxWorkspace() {
 
       <div className={styles.heading}>
         <span>FILES READY</span>
-
         <h2>What would you like to do?</h2>
-
-        <p>
-          Choose an available tool for your selected files.
-        </p>
+        <p>Choose an available tool for your uploaded file.</p>
       </div>
 
       {availableTools.length > 0 ? (
@@ -125,27 +154,17 @@ export default function ToolboxWorkspace() {
               key={tool.id}
               onClick={() => setSelectedTool(tool)}
             >
-              <span className={styles.toolCategory}>
-                {tool.category}
-              </span>
-
+              <span className={styles.toolCategory}>{tool.category}</span>
               <strong>{tool.name}</strong>
-
               <p>{tool.description}</p>
-
-              <span className={styles.openTool}>
-                Open tool →
-              </span>
+              <span className={styles.openTool}>Open tool →</span>
             </button>
           ))}
         </div>
       ) : (
         <div className={styles.noTools}>
           <h3>No tools available yet</h3>
-
-          <p>
-            We don't have a compatible tool for this file type yet.
-          </p>
+          <p>We don't have a compatible tool for this file type yet.</p>
         </div>
       )}
     </div>
